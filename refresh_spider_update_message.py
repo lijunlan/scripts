@@ -36,12 +36,17 @@ for item in content :
 
 for item in list :
 	temp = item["old_data"]
-	dealDict(temp)
-	temp = item["new_data"]
-	dealDict(temp)
+        item["whole_data"] = temp
+        del item["old_data"]
+        del item["new_data"]
+	#dealDict(temp)
+	#temp = item["new_data"]
+	#dealDict(temp)
 
 for item in list :
-	db.for_test.save(item)
+        print item
+	#db.for_test.save(item)
+	db.audit_spider_update_message.save(item)
 
 print time.time()
 
